@@ -1,6 +1,11 @@
 package models;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Bird extends Animal{
+    private static final Logger LOGGER = LogManager.getLogger(Bird.class);
+
     public Bird(String name, double weight, Gender gender, Habitat habitat,
                 Feeding feeding) {
         super(name, weight, gender, habitat, feeding);
@@ -8,16 +13,16 @@ public class Bird extends Animal{
 
     @Override
     public void breath() {
-        System.out.println("I breath oxygen from the air!");
+        LOGGER.info("I breath oxygen from the air!");
     }
 
     @Override
     public void eat() {
-        System.out.println("I eat seeds and worms!");
+        LOGGER.info("I eat seeds and worms!");
     }
 
     @Override
     public void sleep() {
-        System.out.println("I like sleeping in branches from trees!");
+        LOGGER.info("I like sleeping in branches from trees!");
     }
 }

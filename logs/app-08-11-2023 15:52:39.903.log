@@ -1,0 +1,18 @@
+2023-11-08 15:52:40,054 INFO m.Zoo [main] The capacity of the zoo is of 50 customers
+2023-11-08 15:52:40,057 INFO m.Employee [main] I can walk down the streets from the Zoo and also enter to only-employees rooms.
+2023-11-08 15:52:40,057 INFO m.Employee [main] I can walk down the streets from the Zoo and also enter to only-employees rooms.
+2023-11-08 15:52:40,058 INFO m.Employee [main] I can walk down the streets from the Zoo and also enter to only-employees rooms.
+2023-11-08 15:52:40,058 INFO m.Customer [main] I can walk down the streets from the Zoo!
+2023-11-08 15:52:40,058 INFO m.Customer [main] I can walk down the streets from the Zoo!
+2023-11-08 15:52:40,058 INFO m.Person [main] I sleep in a bed, during the night!
+2023-11-08 15:52:40,059 INFO m.Person [main] I sleep in a bed, during the night!
+2023-11-08 15:52:40,059 INFO m.Bird [main] I like sleeping in branches from trees!
+2023-11-08 15:52:40,059 INFO m.Bird [main] I like sleeping in branches from trees!
+2023-11-08 15:52:40,059 INFO m.Person [main] I sleep in a bed, during the night!
+2023-11-08 15:52:40,060 INFO Main [main] There are 4 Animals
+2023-11-08 15:52:40,062 INFO Main [main] Insert two integer numbers
+2023-11-08 15:52:46,966 INFO Main [main] The result of the sum is 30
+2023-11-08 15:52:46,967 ERROR Main [main] Age cannot be negative
+exceptions.NegativeValueException: Age cannot be negative
+	at models.Person.setAge(Person.java:49) ~[test-automation-homework-5/:?]
+	at Main.main(Main.java:111) [test-automation-homework-5/:?]

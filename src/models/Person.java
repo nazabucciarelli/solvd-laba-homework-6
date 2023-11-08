@@ -1,22 +1,27 @@
 package models;
 
+import exceptions.EmptyFieldException;
+import exceptions.IdLengthException;
+import exceptions.NegativeValueException;
 import interfaces.IBreath;
 import interfaces.IEat;
 import interfaces.ISleep;
-import interfaces.IWork;
-
-import java.util.Objects;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class Person implements ISleep, IEat, IBreath {
+    private static final Logger LOGGER = LogManager.getLogger(Person.class);
     protected String id; // Using protected access modifier.
+    protected int age;
     protected String firstName;
     protected String lastName;
     protected Gender gender;
     protected Country country;
 
-    public Person(String id, String firstName, String lastName, Gender gender,
-                  Country country){
+    public Person(String id,int age, String firstName, String lastName,
+                  Gender gender, Country country) {
         this.id = id;
+        this.age = age;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -28,7 +33,22 @@ public abstract class Person implements ISleep, IEat, IBreath {
     }
 
     public void setId(String id) {
+        if (id.length() != 9){
+            throw new IdLengthException("ID length must be exactly 9" +
+                                        " characters");
+        }
         this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+    // First way of handling an exception, using the 'throws' keyword
+    public void setAge(int age) throws NegativeValueException {
+        if (age < 0) {
+            throw new NegativeValueException("Age cannot be negative");
+        }
+        this.age = age;
     }
 
     public String getFirstName() {
@@ -36,6 +56,9 @@ public abstract class Person implements ISleep, IEat, IBreath {
     }
 
     public void setFirstName(String firstName) {
+        if (firstName.isBlank()) {
+            throw new EmptyFieldException("Field first name cannot be empty");
+        }
         this.firstName = firstName;
     }
 
@@ -44,6 +67,9 @@ public abstract class Person implements ISleep, IEat, IBreath {
     }
 
     public void setLastName(String lastName) {
+        if (lastName.isBlank()) {
+            throw new EmptyFieldException("Field last name cannot be empty");
+        }
         this.lastName = lastName;
     }
 
@@ -66,14 +92,14 @@ public abstract class Person implements ISleep, IEat, IBreath {
     abstract public void walk(); // Defining an abstract method
 
     public final void sleep() { // Using final methods
-        System.out.println("I sleep in a bed, during the night!");
+        LOGGER.info("I sleep in a bed, during the night!");
     };
 
     public final void eat() {
-        System.out.println("I can eat meats, vegetables and fruits!");
+        LOGGER.info("I can eat meats, vegetables and fruits!");
     };
 
     public final void breath() {
-        System.out.println("I breath oxygen from the air with my lungs!");
+        LOGGER.info("I breath oxygen from the air with my lungs!");
     };
 }

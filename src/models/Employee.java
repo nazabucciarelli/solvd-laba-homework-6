@@ -1,14 +1,19 @@
 package models;
 
+import exceptions.*;
 import interfaces.IWork;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Employee extends Person implements IWork {
+    private static final Logger LOGGER = LogManager.getLogger(Employee.class);
     private int entryYear;
     private double salary;
 
-    public Employee(String id, String firstName, String lastName, Gender gender,
-                    Country country, int entryYear, double salary) {
-        super(id, firstName, lastName, gender, country);
+    public Employee(String id, int age, String firstName, String lastName,
+                    Gender gender, Country country, int entryYear,
+                    double salary) {
+        super(id, age, firstName, lastName, gender, country);
         this.entryYear = entryYear;
         this.salary = salary;
     }
@@ -18,6 +23,10 @@ public class Employee extends Person implements IWork {
     }
 
     public void setEntryYear(int entryYear) {
+        if ((this.age - (2023 - entryYear)) < 18) {
+            throw new ImpossibleEntryYearException("The employee was under" +
+                                                    "18 that year");
+        }
         this.entryYear = entryYear;
     }
 
@@ -26,12 +35,16 @@ public class Employee extends Person implements IWork {
     }
 
     public void setSalary(double salary) {
+        if (this.salary < 1500 || this.salary > 4500) {
+            throw new NotAllowedSalaryException("Salary values must be " +
+                                                "between 1500 and 4500 USD");
+        }
         this.salary = salary;
     }
 
     @Override
     public void walk() {
-        System.out.println("I can walk down the streets from the Zoo and "
+        LOGGER.info("I can walk down the streets from the Zoo and "
                             +  "also enter to only-employees rooms.");
     }
 
@@ -72,6 +85,6 @@ public class Employee extends Person implements IWork {
 
     @Override
     public void work() {
-        System.out.println("I am an employee from the zoo!");
+        LOGGER.info("I am an employee from the zoo!");
     }
 }

@@ -3,6 +3,8 @@ package models;
 import interfaces.IBreath;
 import interfaces.IEat;
 import interfaces.ISleep;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class Animal implements IBreath, IEat, ISleep {
     private static int quantity = 0; // Using a static variable

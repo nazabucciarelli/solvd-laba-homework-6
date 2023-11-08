@@ -1,15 +1,19 @@
 package models;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 
 public class Zoo {
+    private static final Logger LOGGER = LogManager.getLogger(Zoo.class);
     private static final int CUSTOMERS_CAPACITY = 50; // Using final var.
     private String name;
     private AnimalRoom[] animalRooms;
     private Department[] departments;
 
     static{ // Using a static block
-        System.out.println("The capacity of the zoo is of "
+        LOGGER.info("The capacity of the zoo is of "
                             + CUSTOMERS_CAPACITY + " customers");
     }
 

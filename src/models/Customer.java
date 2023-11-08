@@ -1,16 +1,19 @@
 package models;
 
 import interfaces.IWork;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Customer extends Person implements IWork {
+    private static final Logger LOGGER = LogManager.getLogger(Customer.class);
     private String phoneNumber;
     private int timesVisitingZoo;
     private String work;
 
-    public Customer(String id, String firstName, String lastName, Gender gender,
-                    Country country, String phoneNumber, int timesVisitingZoo,
-                    String work) {
-        super(id, firstName, lastName, gender, country);
+    public Customer(String id, int age, String firstName, String lastName,
+                    Gender gender, Country country, String phoneNumber,
+                    int timesVisitingZoo, String work) {
+        super(id, age, firstName, lastName, gender, country);
         this.phoneNumber = phoneNumber;
         this.timesVisitingZoo = timesVisitingZoo;
         this.work = work;
@@ -42,7 +45,7 @@ public class Customer extends Person implements IWork {
 
     @Override
     public void walk() {
-        System.out.println("I can walk down the streets from the Zoo!");
+        LOGGER.info("I can walk down the streets from the Zoo!");
     }
 
     @Override
@@ -80,6 +83,6 @@ public class Customer extends Person implements IWork {
 
     @Override
     public void work() {
-        System.out.println("I work as a " + this.work);
+        LOGGER.info("I work as a " + this.work);
     }
 }
