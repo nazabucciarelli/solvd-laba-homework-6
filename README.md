@@ -12,12 +12,12 @@ exceptions and put them in the exceptions package in order to keep the
 order in the project. I've used these exceptions in some setter methods
 from Employee and Person classes, to give them some validations and then
 handle these exceptions. First, I've handled the NegativeValueException
-in the setAge method of Person class using the 'throws' keyword. After,
-I've used try-catch-finally to handle the same method, but in the Main
-class, since the use of 'throws' keyword in the signature of the main 
-method is not a good practice. Finally, I've replaced all the 
-System.out.println() with the Logger methods and used the try-catch
-with resources with a Scanner.
+in the setAge method of Person class using the 'throws' keyword, since it
+is a checked exception. After, I've used try-catch-finally to handle the
+same method, but in the Main class, since the use of 'throws' keyword 
+in the signature of the main method is not a good practice. Finally,
+I've replaced all the System.out.println() with the Logger methods and 
+used the try-catch with resources with a Scanner.
 
 ## Technologies
 
