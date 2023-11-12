@@ -11,7 +11,7 @@ arrays by ArrayLists. It was necessary to refactor some classes in order to
 make the code compile. I've used ArrayLists because they are faster regarding
 storing and accessing data, comparing with the LinkedLists that are used to
 manipulate data. Finally, I've made a custom class that represents the basic
-behavior of a Doubly Linked List. It is in the util package, with its class 
+behavior of a Generic Doubly Linked List. It is in the util package, with its class 
 CustomNode that represents a Node from the LinkedList which has a pointer to the
 next and previous node, and contains the element itself.
 
