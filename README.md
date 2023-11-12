@@ -1,7 +1,7 @@
-# 5th Homework of Java Test Automation Course - Solvd Laba
-This repository stores the 5rd homework given by our mentor in the Java Test 
+# 6th Homework of Java Test Automation Course - Solvd Laba
+This repository stores the 6th homework given by our mentor in the Java Test 
 Automation Course at Solvd Laba. It consists in a modification of the last 
-homework (4tn), adding a package named exceptions with five custom 
+homework (5th), adding a package named exceptions with five custom 
 exceptions, handling exceptions in two ways, using try-catch with resources
 and adding the log4j2 libraries in order to learn its functionality.
 
