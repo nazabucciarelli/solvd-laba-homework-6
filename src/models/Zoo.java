@@ -4,20 +4,21 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Zoo {
     private static final Logger LOGGER = LogManager.getLogger(Zoo.class);
     private static final int CUSTOMERS_CAPACITY = 50; // Using final var.
     private String name;
-    private AnimalRoom[] animalRooms;
-    private Department[] departments;
+    private List<AnimalRoom> animalRooms;
+    private List<Department> departments;
 
     static{ // Using a static block
         LOGGER.info("The capacity of the zoo is of "
                             + CUSTOMERS_CAPACITY + " customers");
     }
 
-    public Zoo(String name, AnimalRoom[] animalRooms, Department[] departments){
+    public Zoo(String name, List<AnimalRoom> animalRooms, List<Department> departments){
         this.name = name;
         this.animalRooms = animalRooms;
         this.departments = departments;
@@ -31,19 +32,19 @@ public class Zoo {
         this.name = name;
     }
 
-    public AnimalRoom[] getAnimalRooms() {
+    public List<AnimalRoom> getAnimalRooms() {
         return animalRooms;
     }
 
-    public void setAnimalRooms(AnimalRoom[] animalRooms) {
+    public void setAnimalRooms(List<AnimalRoom> animalRooms) {
         this.animalRooms = animalRooms;
     }
 
-    public Department[] getDepartments() {
+    public List<Department> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(Department[] departments) {
+    public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
 
@@ -55,15 +56,15 @@ public class Zoo {
         Zoo zoo = (Zoo) o;
 
         if (!name.equals(zoo.name)) return false;
-        if (!Arrays.equals(animalRooms, zoo.getAnimalRooms())) return false;
-        return Arrays.equals(departments, zoo.getDepartments());
+        if (!animalRooms.equals(zoo.getAnimalRooms())) return false;
+        return departments.equals(zoo.getDepartments());
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + Arrays.hashCode(animalRooms);
-        result = 31 * result + Arrays.hashCode(departments);
+        result = 31 * result + animalRooms.hashCode();
+        result = 31 * result + departments.hashCode();
         return result;
     }
 
@@ -71,8 +72,8 @@ public class Zoo {
     public String toString() {
         return "Zoo{" +
                 "name='" + name + '\'' +
-                ", animalRooms=" + Arrays.toString(animalRooms) +
-                ", departments=" + Arrays.toString(departments) +
+                ", animalRooms=" + animalRooms +
+                ", departments=" + departments +
                 '}';
     }
 }

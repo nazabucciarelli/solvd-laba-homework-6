@@ -1,13 +1,14 @@
 package models;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class AnimalRoom {
     private String name;
-    private Animal[] animals;
+    private List<Animal> animals;
     private int capacity;
 
-    public AnimalRoom(String name, Animal[] animals, int capacity) {
+    public AnimalRoom(String name, List<Animal> animals, int capacity) {
         this.name = name;
         this.animals = animals;
         this.capacity = capacity;
@@ -21,11 +22,11 @@ public class AnimalRoom {
         this.name = name;
     }
 
-    public Animal[] getAnimals() {
+    public List<Animal> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(Animal[] animals) {
+    public void setAnimals(List<Animal> animals) {
         this.animals = animals;
     }
 
@@ -46,13 +47,13 @@ public class AnimalRoom {
 
         if (capacity != that.capacity) return false;
         if (!name.equals(that.name)) return false;
-        return Arrays.equals(animals, that.getAnimals());
+        return animals.equals(that.getAnimals());
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + Arrays.hashCode(animals);
+        result = 31 * result + animals.hashCode();
         result = 31 * result + capacity;
         return result;
     }
@@ -61,7 +62,7 @@ public class AnimalRoom {
     public String toString() {
         return "AnimalRoom{" +
                 "name='" + name + '\'' +
-                ", animals=" + Arrays.toString(animals) +
+                ", animals=" + animals +
                 ", capacity=" + capacity +
                 '}';
     }

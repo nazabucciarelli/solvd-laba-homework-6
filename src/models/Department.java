@@ -1,12 +1,13 @@
 package models;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Department {
     private String name;
-    private Employee[] employees;
+    private List<Employee> employees;
 
-    public Department(String name, Employee[] employees) {
+    public Department(String name, List<Employee> employees) {
         this.name = name;
         this.employees = employees;
     }
@@ -19,11 +20,11 @@ public class Department {
         this.name = name;
     }
 
-    public Employee[] getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(Employee[] employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 
@@ -35,13 +36,13 @@ public class Department {
         Department that = (Department) o;
 
         if (!name.equals(that.name)) return false;
-        return Arrays.equals(employees, that.getEmployees());
+        return employees.equals(that.getEmployees());
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + Arrays.hashCode(employees);
+        result = 31 * result + employees.hashCode();
         return result;
     }
 
@@ -49,7 +50,7 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "name='" + name + '\'' +
-                ", employees=" + Arrays.toString(employees) +
+                ", employees=" + employees +
                 '}';
     }
 }
